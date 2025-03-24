@@ -17,7 +17,11 @@ function Home() {
       })
     }, [])
 
-    dispatch(setAllPosts(posts));
+    useEffect(() => {
+      if (posts.length > 0) {
+        dispatch(setAllPosts(posts));
+      }
+    }, [posts])
 
     if (posts.length === 0) {
         return (

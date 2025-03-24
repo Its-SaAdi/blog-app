@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Logo } from '../index'
 import LogoutBtn from "./LogoutBtn"
 import { Link, useNavigate } from 'react-router'
@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 function Header() {
   const navigate = useNavigate();
   const authStatus = useSelector(state => state.auth.status);
+  const [isOpen, setIsOpen] = useState(false);
   
   const navItems = [
     {
@@ -39,25 +40,39 @@ function Header() {
   return (
     <header className='py-3 shadow bg-gray-500'>
          <Container>
-            <nav className="flex">
-               <div className="mr-4">
+            <nav className="flex items-center justify-between">
+               <div>
                   <Link to="/">
                      <Logo width="70px" />
                   </Link>
                </div>
 
-               <ul className='flex ml-auto'>
+               <button 
+                className='text-white text-2xl md:hidden cursor-pointer'
+                onClick={() => setIsOpen(!isOpen)}
+               >
+                {isOpen ? '✖' : '☰'}
+               </button>
+
+               <ul 
+                className={`absolute md:static top-14 left-0 w-full md:w-auto md:flex bg-gray-500 md:bg-transparent md:space-x-2 p-4 md:p-0 transition-all duration-500 ease-in-out ${
+                  isOpen ? 'block' : 'hidden'
+                } md:flex`}
+               >
                 {navItems.map((item) => 
-                  item.active ? (
+                  item.active && (
                     <li key={item.name}>
                       <button
-                        onClick={() => navigate(item.slug)} 
-                        className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                        onClick={() => {
+                          navigate(item.slug)
+                          setIsOpen(false)
+                        }} 
+                        className='block w-full px-6 py-2 hover:bg-blue-100 rounded-full cursor-pointer duration-200'
                       >
                         {item.name}
                       </button>
                     </li>
-                  ) : null
+                  )
                 )}
 
                 {authStatus && (
