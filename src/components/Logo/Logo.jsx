@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../images/Beyond Bytes.webp'
+import logo from '../../images/EchoSphere2.webp'
 
 const Logo = ({width = "100px"}) => {
   return (

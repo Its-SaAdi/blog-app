@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+:root {
+   --reseda-green: #687864ff;
+   --cerulean: #31708eff;
+   --air-force-blue: #5085a5ff;
+   --light-sky-blue: #8fc1e3ff;
+   --seasalt: #f7f9fbff;
+}

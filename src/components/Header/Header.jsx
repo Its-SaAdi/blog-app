@@ -55,7 +55,7 @@ function Header() {
                </button>
 
                <ul 
-                className={`absolute md:static top-14 left-0 w-full md:w-auto md:flex bg-gray-500 md:bg-transparent md:space-x-2 p-4 md:p-0 transition-all duration-500 ease-in-out ${
+                className={`absolute md:static top-14 left-0 z-10 w-full md:w-auto md:flex bg-gray-500 md:bg-transparent md:space-x-2 p-4 md:p-0 transition-all duration-500 ease-in-out ${
                   isOpen ? 'block' : 'hidden'
                 } md:flex`}
                >
