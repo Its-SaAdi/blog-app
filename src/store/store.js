@@ -5,7 +5,7 @@ import postReducers from './postSlice'
 const store = configureStore({
     reducer: {
         auth: authReducers,
-        posts: postReducers,
+        post: postReducers,
     }
 });
 

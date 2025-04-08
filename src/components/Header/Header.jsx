@@ -11,7 +11,7 @@ function Header() {
   
   const navItems = [
     {
-      name: "Home",
+      name: "Posts",
       slug: '/',
       active: true,
     },
@@ -26,12 +26,12 @@ function Header() {
       active: !authStatus,
     },
     {
-      name: "All Posts",
+      name: "My Posts",
       slug: '/all-posts',
       active: authStatus,
     },
     {
-      name: "Add Post",
+      name: "Create Post",
       slug: '/add-post',
       active: authStatus,
     },

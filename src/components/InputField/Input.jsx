@@ -4,6 +4,7 @@ const Input = forwardRef(function Input({
     label,
     type = "text",
     className = "",
+    isRequired,
     ...props
 }, ref) {
     const id = useId();
@@ -11,10 +12,15 @@ const Input = forwardRef(function Input({
     return (
         <div className='w-full'>
             {label && <label
-                className='inline-block mb-2 pl-1'
+                className='text-sm font-medium mb-2 pl-1 text-left flex gap-0.5'
                 htmlFor={id}
             >
                 {label}
+                {isRequired && (
+                    <span className='text-red-600'>
+                        *
+                    </span>
+                )}
             </label>}
             
             <input  

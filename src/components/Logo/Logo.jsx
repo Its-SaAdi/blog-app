@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../images/EchoSphere2.webp'
+import logo from '../../images/logo-transparent.png'
 
 const Logo = ({width = "100px"}) => {
   return (

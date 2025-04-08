@@ -51,6 +51,18 @@ export class StorageService {
             console.log("Appwrite service :: getFilePreview error: ", error);
         }
     }
+
+    getFileView(fileId) {
+        try {
+            const image = this.bucket.getFileView(
+                conf.appwriteBucketId,
+                fileId,
+            )
+            return image;
+        } catch (error) {
+            console.log("Appwrite service :: getFileView error: ", error);
+        }
+    }
 }
 
 const storageService = new StorageService();

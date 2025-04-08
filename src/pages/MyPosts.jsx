@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import dbService from '../appwrite/dbService'
+// import dbService from '../appwrite/dbService'
+import { useSelector } from 'react-redux';
 import Container from '../components/Container/Container'
 import PostCard from '../components/PostCard/PostCard'
 
 function AllPosts() {
     const [posts, setPosts] = useState([]);
-
-    // Here query is not executed because we are overwriting it with []. Both Active and unactive posts are fetched
+    const userData = useSelector((state) => state.auth.userData);
+    const dbPosts = useSelector((state) => state.post.posts);
+    
     useEffect(() => {
-        dbService.getPosts([]).then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
-            }
-        });
+        if (dbPosts) {
+            const userPosts = dbPosts.filter((post) => post.userId === userData.$id);
+            console.log(dbPosts, userPosts);
+            
+            setPosts(userPosts);
+        }
     }, []);
 
   return (

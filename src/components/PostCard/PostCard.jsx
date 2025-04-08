@@ -15,7 +15,7 @@ function PostCard({ $id, title, featuredImage, $createdAt }) {
         {/* Image */}
         <div className="w-full h-auto overflow-hidden">
           <img
-            src={storageService.getFilePreview(featuredImage)}
+            src={storageService.getFileView(featuredImage)}
             alt={title}
             className="w-full h-full aspect-video transition-transform group-hover:scale-105"
           />

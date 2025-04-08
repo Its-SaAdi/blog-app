@@ -27,7 +27,7 @@ function Signup() {
    };
 
    return (
-      <div className="flex items-center justify-center w-[50%] text-left">
+      <div className="flex items-center justify-center w-[45%] not-sm:w-[90%] text-left">
          <div className={`mx-auto w-full max-w-lg bg-gray-300 rounded-xl p-10 border border-black/10`}>
             <div className="mb-3 flex justify-center">
                <span className="inline-block w-full max-w-[100px]">
