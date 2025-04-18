@@ -7,7 +7,7 @@ const Logo = ({width = "100px"}) => {
       <img 
         src={logo} 
         alt="Webiste Logo"
-        width={50}
+        width={60}
         className='rounded-full mx-auto'
       />
     </div>
