@@ -95,7 +95,7 @@ export default function PostForm({ post }) {
    return (
       <form
          onSubmit={handleSubmit(submit)}
-         className="w-full mx-auto p-6 bg-gray-300 shadow-lg rounded-xl"
+         className="w-full mx-auto p-6 bg-zinc-100 border border-black/10 shadow-lg rounded-xl"
       >
          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
@@ -134,7 +134,7 @@ export default function PostForm({ post }) {
                   label="Featured Image: "
                   isRequired
                   type="file"
-                  className="border border-gray-300 rounded-lg p-2 w-full"
+                  className="border border-gray-300 rounded-lg p-2 w-full file:cursor-pointer cursor-pointer file:bg-green-700 file:text-white hover:file:bg-green-800 file:py-1 file:px-2 file:rounded-md file:duration-200"
                   accept="image/png, image/jpg, image/jpeg, image/gif"
                   {...register("image", { required: !post })}
                   onChange={handleImageChange}
@@ -157,8 +157,8 @@ export default function PostForm({ post }) {
 
                <Button
                   type="submit"
-                  bgColor={post ? "bg-green-500" : undefined}
-                  className="w-full py-2"
+                  bgColor={"bg-green-700"}
+                  className="w-full py-2 hover:bg-green-800 cursor-pointer transition-colors duration-200 font-semibold rounded-xl shadow-md"
                >
                   {post ? "Update Post" : "Create Post"}
                </Button>

@@ -27,8 +27,8 @@ function Signup() {
    };
 
    return (
-      <div className="flex items-center justify-center w-[45%] not-sm:w-[90%] text-left">
-         <div className={`mx-auto w-full max-w-lg bg-gray-300 rounded-xl p-10 border border-black/10`}>
+      <div className="flex items-center justify-center w-[45%] not-sm:w-[92%] py-8">
+         <div className={`mx-auto w-full max-w-lg bg-zinc-100 rounded-3xl shadow-lg p-10 border border-black/10`}>
             <div className="mb-3 flex justify-center">
                <span className="inline-block w-full max-w-[100px]">
                   <Logo width="100%" />
@@ -85,7 +85,7 @@ function Signup() {
                      })}
                   />
 
-                  <Button type="submit" className="w-full cursor-pointer hover:bg-blue-500">
+                  <Button type="submit" bgColor='bg-green-700' className='w-full cursor-pointer hover:bg-green-800 transition-colors duration-200 font-semibold rounded-xl shadow-md'>
                      Create Account
                   </Button>
                </div>

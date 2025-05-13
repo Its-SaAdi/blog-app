@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
+import { Linkedin, Facebook, Github } from "lucide-react";
 import Logo from "../Logo/Logo";
 
 const Footer = () => {
@@ -18,7 +19,7 @@ const Footer = () => {
             {/* Branding */}
             <div className="flex flex-col gap-4">
                <Logo width="120px" />
-               <p className="text-sm">Mind Nibbles — Daily bytes of learning</p>
+               <p className="text-sm"><span className="text-green-800 font-semibold">Mind Nibbles</span> — Daily bytes of learning</p>
                <p className="text-xs text-gray-600">
                   &copy; {currentYear} Mind Nibbles. All rights reserved. <br />
                   Built by{" "}
@@ -26,7 +27,7 @@ const Footer = () => {
                      href="https://saadjawed.vercel.app"
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="text-blue-600 hover:underline"
+                     className="text-green-700 hover:underline"
                   >
                      Saad Jawed
                   </a>
@@ -48,9 +49,9 @@ const Footer = () => {
                      </li>
                   ))}
                   <li>
-                     <Link to="/" className="text-blue-600 text-sm hover:underline">
+                     <a href="#all-posts" className="text-green-700 text-sm hover:underline">
                         See all posts →
-                     </Link>
+                     </a>
                   </li>
                </ul>
             </div>
@@ -60,19 +61,19 @@ const Footer = () => {
                {/* Social Links */}
                <div>
                   <h4 className="text-sm font-semibold uppercase mb-2">Follow Me</h4>
-                  <div className="flex justify-center gap-3">
-                     <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                  <div className="flex justify-center gap-4">
+                     <Link to="https://www.facebook.com/muhammadsaad.jawedhussain" target="_blank" rel="noreferrer" className="hover:scale-115 transition">
                         {/* <img src="/icons/facebook.svg" alt="Facebook" className="w-5 h-5" />  */}
-                        🐦
-                     </a>
-                     <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                        {/* <img src="/icons/twitter.svg" alt="Twitter" className="w-5 h-5" /> */}
-                        💻
-                     </a>
-                     <a href="https://github.com" target="_blank" rel="noreferrer">
+                        <Facebook />
+                     </Link>
+                     <Link to="https://github.com/Its-SaAdi" target="_blank" rel="noreferrer" className="hover:scale-115 transition">
                         {/* <img src="/icons/github.svg" alt="GitHub" className="w-5 h-5" /> */}
-                        ✉️
-                     </a>
+                        <Github />
+                     </Link>
+                     <Link to="https://linkedin.com/in/saad-tech" target="_blank" rel="noreferrer" className="hover:scale-115 transition">
+                        {/* <img src="/icons/twitter.svg" alt="Twitter" className="w-5 h-5" /> */}
+                        <Linkedin />
+                     </Link>
                   </div>
                </div>
 
@@ -90,11 +91,11 @@ const Footer = () => {
                         type="email"
                         placeholder="Your email"
                         required
-                        className="w-full px-3 py-2 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-green-700"
                      />
                      <button
                         type="submit"
-                        className="px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700"
+                        className="px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-md hover:bg-green-800"
                      >
                         Subscribe
                      </button>
@@ -104,7 +105,7 @@ const Footer = () => {
                {/* Back to Top */}
                <button
                   onClick={scrollToTop}
-                  className="text-xs text-blue-600 hover:underline cursor-pointer"
+                  className="text-xs text-green-700 hover:underline cursor-pointer"
                >
                   ↑ Back to top
                </button>

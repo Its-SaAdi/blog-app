@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className='min-h-screen w-full flex flex-wrap content-between bg-gray-400'>
+    <div className='min-h-screen w-full flex flex-wrap content-between bg-zinc-100'>
       <div className='w-full block'>
         <Header />
         <main>
@@ -35,7 +35,7 @@ function App() {
     </div>
   ) :  ( 
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-24 h-24 border-4 border-blue-500 border-solid border-t-transparent rounded-full animate-spin"></div>
+      <div className="w-24 h-24 border-4 border-green-700 border-solid border-t-transparent rounded-full animate-spin"></div>
     </div>
   )
 }
