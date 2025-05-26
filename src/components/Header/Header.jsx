@@ -3,7 +3,8 @@ import { Container, Logo } from '../index'
 import LogoutBtn from "./LogoutBtn"
 import { Link, NavLink, useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, LogIn, Search } from 'lucide-react'
+import SearchBar from '../Search/SearchBar'
 
 function Header() {
   const navigate = useNavigate();
@@ -80,7 +81,10 @@ function Header() {
                 <LogoutBtn />
               </li>
             )}
+            
+            {/* <SearchBar /> */}
           </ul>
+
         </nav>
       </Container>
     </header>

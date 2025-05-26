@@ -1,40 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router'
+import { Calendar, Clock } from "lucide-react";
 import storageService from '../../appwrite/storageService'
+// import parse from 'html-react-parser'
+import { Link } from "react-router";
 
-function PostCard({ $id, title, featuredImage, $createdAt }) {
+export default function PostCard({ $id, title, featuredImage, $createdAt, content }) {
   const formattedDate = new Date($createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
-
   return (
     <Link to={`/post/${$id}`} className="group">
-      <div className="w-full bg-white rounded-xl shadow-md overflow-hidden transition-transform transform group-hover:scale-[1.02] group-hover:shadow-lg">
-        {/* Image */}
-        <div className="w-full h-auto overflow-hidden">
-          <img
-            src={storageService.getFileView(featuredImage)}
-            alt={title}
-            className="w-full h-full aspect-video transition-transform group-hover:scale-105"
-          />
-        </div>
+      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300 flex flex-col h-full">
+        <img
+          src={storageService.getFileView(featuredImage)}
+          alt={title}
+          className="w-full h-40 object-cover sm:h-48 md:h-40 lg:h-40"
+        />
 
-        <div className="p-4">
-          <h2 className="text-xl font-semibold text-gray-900 line-clamp-2">{title}</h2>
-          <div className="flex items-center justify-center gap-2 text-gray-500 text-sm mt-2">
-            <span className="">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-gray-500">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10m-11 7h12M3 5h18a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2z" />
-              </svg>
-            </span>
-            <p>{formattedDate}</p>
+        <div className="p-4 flex flex-col flex-1 text-left">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-800 line-clamp-2">
+            {title}
+          </h2>
+
+          {/* <p className="text-sm text-gray-600 line-clamp-3 flex-1 my-4">
+            {"Start your day with these simple but powerful habits that improve your mental sharpness and mood...".slice(0, 30) + "..."}
+          </p> */}
+
+          <div className="flex justify-between text-xs text-gray-500 mt-4 border-t pt-4 border-gray-100">
+            <div className="flex items-center gap-1">
+              <Calendar className="w-4 h-4" />
+              <span>{formattedDate}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="w-4 h-4" />
+              <span>{Math.ceil(content.split(" ").length / 200)} min read</span>
+            </div>
           </div>
         </div>
       </div>
     </Link>
   );
 }
-
-export default PostCard
