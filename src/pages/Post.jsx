@@ -123,7 +123,7 @@ export default function Post() {
             </div>
 
             {/* Post Content */}
-            <div className="prose lg:prose-lg prose-green max-w-none text-left">
+            <div className="prose lg:prose-lg prose-green max-w-none text-left leading-none">
                {parse(post.content)}
             </div>
 
@@ -142,7 +142,7 @@ export default function Post() {
             {relatedPosts.length > 0 && (
                <div className="mt-10 border-t border-gray-200 pt-10">
                   <h3 className="text-2xl font-bold mb-6 text-gray-800">Related Posts</h3>
-                  <div className="grid gap- sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                      {relatedPosts.map((post) => (
                         <PostCard key={post.$id} {...post} />
                      ))}
