@@ -20,6 +20,7 @@ export default function PostForm({ post }) {
       });
    const navigate = useNavigate();
    const userData = useSelector((state) => state.auth.userData);
+   const [loading, setLoading] = useState(false);
    const dispatch = useDispatch();
 
    const [previewImage, setPreviewImage] = useState(
@@ -32,6 +33,7 @@ export default function PostForm({ post }) {
    };
 
    const submit = async (data) => {
+      setLoading(true);
       if (post) {
          const file = data.image[0]
             ? await storageService.uploadFile(data.image[0])
@@ -67,6 +69,7 @@ export default function PostForm({ post }) {
             if (dbPost) navigate(`/post/${dbPost.$id}`);
          }
       }
+      setLoading(false);
    };
 
    const slugTransform = useCallback((value) => {
@@ -157,10 +160,16 @@ export default function PostForm({ post }) {
 
                <Button
                   type="submit"
+                  disabled={loading}
                   bgColor={"bg-green-700"}
-                  className="w-full py-2 hover:bg-green-800 cursor-pointer transition-colors duration-200 font-semibold rounded-xl shadow-md"
+                  className={`w-full py-2 transition-colors duration-200 font-semibold rounded-xl shadow-md ${loading ? 'cursor-not-allowed opacity-70' : 'hover:bg-green-800 cursor-pointer'}`}
                >
-                  {post ? "Update Post" : "Create Post"}
+                  {loading ? (
+                     <div className="flex items-center justify-center space-x-2">
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        <span>{ post ? "Updating Post" : "Creating Post"}...</span>
+                     </div>
+                  ) : post ? "Update Post" : "Create Post"}
                </Button>
             </div>
          </div>
