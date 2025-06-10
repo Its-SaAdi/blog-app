@@ -15,7 +15,7 @@ const postSlice = createSlice({
 
         // Action that requires a single post to store / append in the state
         addPost: (state, action) => {
-            state.posts.push(action.payload.post);
+            state.posts.push(action.payload);
         },
 
         // Action that requires an updated post and it's slug in the payload to update in the state
@@ -27,7 +27,7 @@ const postSlice = createSlice({
 
         // Action that requires a post slug to delete individual post from the state
         deletePost: (state, action) => {
-            state.posts = state.posts.filter((post) => post.slug !== action.payload.slug);
+            state.posts = state.posts.filter((post) => post.$id !== action.payload.slug);
         },
     }
 });

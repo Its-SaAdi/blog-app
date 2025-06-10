@@ -64,7 +64,8 @@ export default function PostForm({ post }) {
                userId: userData.$id,
             });
 
-            // dispatch(addPost(dbPost));
+            console.log(dbPost);
+            dispatch(addPost(dbPost));
 
             if (dbPost) navigate(`/post/${dbPost.$id}`);
          }

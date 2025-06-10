@@ -4,14 +4,17 @@ import dbService from "../appwrite/dbService";
 import storageService from "../appwrite/storageService";
 import { Button } from "../components/index";
 import PostCard from "../components/PostCard/PostCard";
+import GoToTop from "../components/GoToTop/GoToTop";
 import parse from "html-react-parser";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deletePost as deleteFromStore } from "../store/postSlice";
 import { CalendarDaysIcon, Clock, User, Pencil, Trash2, Share2, ArrowLeft } from "lucide-react";
 
 export default function Post() {
    const [post, setPost] = useState(null);
    const { slug } = useParams();
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    const userData = useSelector((state) => state.auth.userData);
    const dbPost = useSelector(state => state.post.posts);
@@ -46,6 +49,7 @@ export default function Post() {
       dbService.deletePost(post.$id).then((status) => {
          if (status) {
             storageService.deleteFile(post.featuredImage);
+            dispatch(deleteFromStore({slug: post.$id}))
             navigate("/");
          }
       });
@@ -79,6 +83,7 @@ export default function Post() {
                   src={storageService.getFileView(post.featuredImage)}
                   alt={post.title}
                   className="w-full shadow-lg rounded-2xl mb-10 object-cover max-h-[500px]"
+                  loading="lazy"
                />
 
                {isAuthor && (
@@ -123,7 +128,7 @@ export default function Post() {
             </div>
 
             {/* Post Content */}
-            <div className="prose lg:prose-lg prose-green max-w-none text-left leading-none">
+            <div className="prose lg:prose-lg prose-green max-w-none text-left">
                {parse(post.content)}
             </div>
 
@@ -150,6 +155,7 @@ export default function Post() {
                </div>
             )}
          </div>
+         <GoToTop />
       </article>
    ) : null;
 }
